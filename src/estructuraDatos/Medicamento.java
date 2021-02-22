@@ -80,7 +80,7 @@ public final class Medicamento extends Producto {
     
     @Override
     public String toString(){
-        return super.toString() + "\nTipo: " + medicamento + "\nComo tomar:        " + comoTomar + "\nEfectos adversos:  " + efectosAdversos + ".";
+        return super.toString() + "\nTipo:         " + medicamento + "\nComo tomar:     " + comoTomar + "\nEfectos adversos:" + efectosAdversos + ".";
         
     }
     

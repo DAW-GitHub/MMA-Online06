@@ -169,7 +169,7 @@ public class CPrincipal {
                  case 1:
                      /**OPCIÓN 1: VER PRODUCTOS*/
 
-                        visualizar(productos);                                
+                        menuVisualizarProductos();                               
 
                          break;
 
@@ -294,12 +294,12 @@ public class CPrincipal {
        
        do{
                 
-            IO_ES.escribirLN(Color.CYAN + "" + Color.RESET);
-            IO_ES.escribirLN(Color.CYAN + "     GESTIÓN DE PRODUCTOS   " + Color.RESET);
-            IO_ES.escribirLN(Color.CYAN + "-----------------------------" + Color.RESET);
-            IO_ES.escribirLN(Color.CYAN+ "0. Volver al menú Gestionar Productos" + Color.RESET);
-            IO_ES.escribirLN(Color.CYAN + "1. VER TODOS LOS PRODUCTOS" + Color.RESET);
-            IO_ES.escribirLN(Color.CYAN + "2. VER DE UNO EN UNO" + Color.RESET);
+            IO_ES.escribirLN(Color.AZUL + "" + Color.RESET);
+            IO_ES.escribirLN(Color.AZUL + "     VISUALIZAR PRODUCTOS   " + Color.RESET);
+            IO_ES.escribirLN(Color.AZUL + "-----------------------------" + Color.RESET);
+            IO_ES.escribirLN(Color.AZUL + "0. Volver al menú Gestionar Productos" + Color.RESET);
+            IO_ES.escribirLN(Color.AZUL + "1. VER TODOS LOS PRODUCTOS" + Color.RESET);
+            IO_ES.escribirLN(Color.AZUL + "2. VER DE UNO EN UNO" + Color.RESET);
 
             option = IO_ES.leerByte(Color.CYAN + "Elija una opción: " + Color.RESET, 0, 2);        
 
@@ -698,24 +698,17 @@ public class CPrincipal {
                 IO_ES.escribirLN(productos[i] + "");  //Imprimir el método toString del objeto.
                 IO_ES.escribirLN("");             //Generar un salto de línea para una mejor visualización
                 
-                option = IO_ES.leerByte("0. Atrás | 1.Siguiente");
+                option = IO_ES.leerByte("0. Atrás | 1.Siguiente", 0,1);
 
                 IO_ES.escribirLN("");
 
-                switch(option){
-                    
-                    case 0:
-                        i = (int) productos.length;
+                if(option == 0) i = (int) productos.length;
                         
-                        break;
-                        
-                    case 1:
-                        i++;
-                        break;
-                        
-                }
+                
             
             }//fin del condicional if
+            
+            i++;
                         
         }//fin del bucle for
         
@@ -770,13 +763,13 @@ public class CPrincipal {
                     
                     try{
 
-                    tipoMedicamento = elegirEnumMedicamento();
+                        tipoMedicamento = elegirEnumMedicamento();
 
-                    comoTomar = IO_ES.leerCadena("¿Cómo tomar?: ");
+                        comoTomar = IO_ES.leerCadena("¿Cómo tomar?: ");
 
-                    descripcion = IO_ES.leerCadena("Efectos Adversos: ");
-                    
-                    productos[posicion] = new Medicamento(codigo,nombre,descripcion,precio,unidades,tipoMedicamento, comoTomar, descripcion); // Creación del objeto producto
+                        descripcion = IO_ES.leerCadena("Efectos Adversos: ");
+
+                        productos[posicion] = new Medicamento(codigo,nombre,descripcion,precio,unidades,tipoMedicamento, comoTomar, descripcion); // Creación del objeto producto
                     
                     } catch(IllegalArgumentException e){
                 
@@ -1008,6 +1001,7 @@ public class CPrincipal {
                     if(productos[i].getCodigo().equalsIgnoreCase(codigo)){
 
                         posicion = i;
+                        
                         i=productos.length;
 
                     }//fin del condicional if
