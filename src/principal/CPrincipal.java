@@ -263,8 +263,8 @@ public class CPrincipal {
     }//fin del método menuModificarCliente().
     
     /** Menú para modificar los atributos del Producto
-     * 
-     * @return opción elección
+     * @param clase especifica si es medicamento o parafarmacia
+     * @return opcion elegida.
      */
     public static byte menuModificarProducto(byte clase) {
  
@@ -672,8 +672,7 @@ public class CPrincipal {
     /**     MÉTODOS DE GESTIÓN DE PRODUCTOS   .*/
     
     /**
-     * Metodo para la visualizacion de arrays de objetos
-     * @param array array de objetos a visualizar
+     * Metodo para la visualizacion de arrays de productos
      */
     public static void visualizarProducto(){
         

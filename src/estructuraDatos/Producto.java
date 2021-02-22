@@ -263,7 +263,7 @@ public abstract class Producto {
     @Override
     public String toString(){
         
-        return "Identificador: " + codigo + "\nNombre:        " + nombre + "\nDescripición:  " + descripcion + "\nPrecio:        " + precio + "€\nUnidades:      " + unidades;
+        return "Identificador: " + codigo + "\nNombre:         " + nombre + "\nDescripición:   " + descripcion + "\nPrecio:         " + precio + "€\nUnidades:       " + unidades;
         
         
     } //fin del método toString().

@@ -8,8 +8,9 @@ package estructuraDatos;
 import estructuraDatos.Enumerados.Categoria;
 
 /**
- *
+ * Clase para los productos de parafarmacia
  * @author Ana
+ * @version 1.0
  */
 public class ParaFarmacia extends Producto{
     
@@ -41,6 +42,10 @@ public class ParaFarmacia extends Producto{
         
     }
     
+    /**
+     * Método para clonar productos de parafarmacia
+     * @param a objeto de ParaFarmacia
+     */
     public ParaFarmacia(ParaFarmacia a){
         
         super(a.getCodigo(), a.getNombre(), a.getDescripcion(), a.getPrecio(), a.getUnidades());
@@ -52,27 +57,51 @@ public class ParaFarmacia extends Producto{
         this.categoria = a.getCategoria();
     }
     
+    /**
+     * Método para obtener la caegoria del producto
+     * @return categoría
+     */
     public Categoria getCategoria(){
         return categoria;
     }
     
+    /**
+     * Método para cambiar/añadir la caegoria del producto
+     * @param categoria categoría
+     */
     public void setCategoria(Categoria categoria){
         this.categoria = categoria;   
     }
     
+    /**
+     * Método para obtener las dosis por unidad
+     * @return dosis por unidad
+     */
     public int getDosisUnidades(){
   
         return dosisUnidades;
     }
     
+    /**
+     * Método para cambiar/añadir dosis por unidad
+     * @param dosisUnidades dosis por unidad
+     */
     public void setDosisUnidades(int dosisUnidades){
         this.dosisUnidades = dosisUnidades;
     }
     
+    /**
+     * Método para obtener el descuento
+     * @return descuento (%)
+     */
     public float getDescuento(){
         return descuento;
     }
     
+    /**
+     * Método para añadir/cambiar descuento
+     * @param descuento descuento (%)
+     */
     public void setDescuento(float descuento){
         this.descuento = descuento;
     }
@@ -80,7 +109,7 @@ public class ParaFarmacia extends Producto{
     @Override
     public String toString(){
     
-        return super.toString() + "\nCategoría: " + categoria + "\nDosis por unidad:        " + dosisUnidades + "\nDescuento:  " + descuento + ".";
+        return super.toString() + "\nCategoría:   " + categoria + "\nDosis por unidad:      " + dosisUnidades + "\nDescuento:  " + descuento + "%.";
         
     }
     
