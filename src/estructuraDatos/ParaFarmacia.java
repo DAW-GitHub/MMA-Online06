@@ -5,6 +5,8 @@
  */
 package estructuraDatos;
 
+import estructuraDatos.Enumerados.Categoria;
+
 /**
  *
  * @author Ana
@@ -50,21 +52,21 @@ public class ParaFarmacia extends Producto{
         this.categoria = a.getCategoria();
     }
     
-    public Enumerados.Categoria getCategoria(){
+    public Categoria getCategoria(){
         return categoria;
     }
     
-    public void setCategoria(Enumerados.Categoria a){
-        categoria = a;   
+    public void setCategoria(Categoria categoria){
+        this.categoria = categoria;   
     }
     
     public int getDosisUnidades(){
-        int dosis = 0;
-        return dosis;
+  
+        return dosisUnidades;
     }
     
-    public int setDosisUnidades(){
-        return dosisUnidades;
+    public void setDosisUnidades(int dosisUnidades){
+        this.dosisUnidades = dosisUnidades;
     }
     
     public float getDescuento(){

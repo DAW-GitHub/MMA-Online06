@@ -266,7 +266,7 @@ public class CPrincipal {
      * 
      * @return opción elección
      */
-    public static byte menuModificarProducto() {
+    public static byte menuModificarProducto(byte clase) {
  
        byte option;
 
@@ -279,8 +279,22 @@ public class CPrincipal {
         IO_ES.escribirLN(Color.AZUL + "4. MODIFICAR PRECIO" + Color.RESET);
         IO_ES.escribirLN(Color.AZUL + "5. AÑADIR UNIDADES" + Color.RESET);
         IO_ES.escribirLN(Color.AZUL + "6. QUITAR UNIDADES" + Color.RESET);
+        
+        if(clase == 0){
+            
+            IO_ES.escribirLN(Color.AZUL + "7. MODIFICAR TIPO" + Color.RESET);
+            IO_ES.escribirLN(Color.AZUL + "8. MODIFICAR COMO TOMARLO" + Color.RESET);
+            IO_ES.escribirLN(Color.AZUL + "9. MODIFICAR EFECTOS ADVERSOS" + Color.RESET);
+            
+        }
+        if(clase == 1){
+            IO_ES.escribirLN(Color.AZUL + "7. MODIFICAR CATEGORÍA" + Color.RESET);
+            IO_ES.escribirLN(Color.AZUL + "8. MODIFICAR DOSIS POR UNIDAD" + Color.RESET);
+            IO_ES.escribirLN(Color.AZUL + "9. MODIFICAR DESCUENTO" + Color.RESET);
+            
+        }
 
-        option = IO_ES.leerByte(Color.AZUL + "Elija una opción: " + Color.RESET, 0, 6);        
+        option = IO_ES.leerByte(Color.AZUL + "Elija una opción: " + Color.RESET, 0, 9);        
 
        return option;
  
@@ -818,13 +832,17 @@ public class CPrincipal {
         
         byte option;
         
+        byte clase = 0;
+        
         boolean option2 = false, correcto = false;
         
         String id, codigo;
         
         float cantidad;
-
-
+        
+        Medicamento medicamento = null;
+        
+        ParaFarmacia parafarmacia = null;
             
             codigo = IO_ES.leerCadena("Indique código del producto: ");
             
@@ -837,7 +855,7 @@ public class CPrincipal {
             }else{
 
                 do{
-
+                                        
                     IO_ES.escribirLN(productos[posicion] + ""); //Visualizar producto.
 
                     option2 = IO_ES.leerBooleano("¿Desea modificar el producto: " + codigo + "? ");
@@ -858,8 +876,17 @@ public class CPrincipal {
                 if(option2){
                     
                     do{
-  
-                        option = menuModificarProducto();
+                        if(productos[posicion].getClass() == Medicamento.class){
+                            clase = 0;
+                            medicamento = (Medicamento) productos[posicion];
+                        } 
+
+                        if(productos[posicion].getClass() == ParaFarmacia.class){
+                            clase = 1;
+                            parafarmacia = (ParaFarmacia) productos[posicion];
+                        } 
+                        
+                        option = menuModificarProducto(clase);
                         
                         switch(option){
                             case 0:
@@ -910,6 +937,43 @@ public class CPrincipal {
                                     
                                     if(correcto) IO_ES.escribirLN(Color.VERDE + "-->CANTIDAD QUITADA" + Color.RESET); else IO_ES.escribirLN(Color.ROJO + "Cantidad no válida." + Color.RESET);
 
+
+                                break;
+                            
+                            case 7:
+                                //OPCIÓN 7: MODIFICAR TIPO/CATEGORÍA
+                                    if(clase == 0){
+                                        medicamento.setMedicamento(elegirEnumMedicamento());
+                                    }else{
+                                        parafarmacia.setCategoria(elegirEnumCategoria());
+                                    }
+
+                                break;
+
+                            case 8:
+                                //OPCIÓN 8: MODIFICAR COMO TOMAR/DOSISUNIDAD
+
+                                    if(clase == 0){
+                                        
+                                        medicamento.setComoTomar(IO_ES.leerCadena("Introduzca como tomar: "));
+                                        
+                                    }else{                                        
+                                        parafarmacia.setDosisUnidades(IO_ES.leerInteger("Introduzca dosis por unidad: "));
+                                    }
+
+                                break;
+
+                            case 9:
+                                //OPCIÓN 9: MODIFICAR EFECTOS ADVERSOS/DESCUENTO
+                               
+                                    if(clase == 0){
+
+                                        medicamento.setEfectosAdversos(IO_ES.leerCadena("Introduzca efectos adversos: "));
+                                        
+                                    }else{
+                                        
+                                        parafarmacia.setDescuento(IO_ES.leerInteger("Introduzca descuento: "));
+                                    }
 
                                 break;
 

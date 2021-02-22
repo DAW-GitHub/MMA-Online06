@@ -63,19 +63,21 @@ public final class Medicamento extends Producto {
     }
     
     public String getComoTomar(){
-        return "oral";
+        return this.comoTomar;
     }
     
-    public void setComoTomar(String a){
+    public void setComoTomar(String comoTomar){
+        
+        this.comoTomar = comoTomar;
         
     }
     
     public String getEfectosAdversos(){
-        return"mareo";
+        return this.efectosAdversos;
     }
     
-    public void setEfectosAdversos(String a){
-        
+    public void setEfectosAdversos(String efectosAdversos){
+        this.efectosAdversos = efectosAdversos;
     }
     
     @Override
